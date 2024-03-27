@@ -1,0 +1,41 @@
+<ion-header></ion-header>
+<ion-content class="ion-padding">
+  <form [formGroup]="validatorsUser" (ngSubmit)="login()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" placeholder="Enter your email" formControlName="email" required></ion-input>
+          </ion-item>
+          <div *ngIf="validatorsUser.get('email')?.hasError('required') && (validatorsUser.get('email')?.dirty || validatorsUser.get('email')?.touched)" class="error-message">
+            Email is required
+          </div>
+          <div *ngIf="validatorsUser.get('email')?.hasError('pattern') && (validatorsUser.get('email')?.dirty || validatorsUser.get('email')?.touched)" class="error-message">
+            Invalid email format
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item lines="none">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password" placeholder="Enter your password" formControlName="password" required></ion-input>
+          </ion-item>
+          <div *ngIf="validatorsUser.get('password')?.hasError('required') && (validatorsUser.get('password')?.dirty || validatorsUser.get('password')?.touched)" class="error-message">
+            Password is required
+          </div>
+          <div *ngIf="validatorsUser.get('password')?.hasError('minlength') && (validatorsUser.get('password')?.dirty || validatorsUser.get('password')?.touched)" class="error-message">
+            Password must be at least 5 characters long
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button expand="block" color="secondary" type="submit">Login</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+

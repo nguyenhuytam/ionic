@@ -1,0 +1,7 @@
+
+  <div class="list-Products" *ngFor="let item of getListProduct()" (click)="getDetail(item.id)">
+    <ion-img [src]="item.img" ></ion-img>
+    <p class="ion-no-margin">{{item.name}}</p>
+    <p class="ion-no-margin">{{item.price}}</p>
+  </div>
+
